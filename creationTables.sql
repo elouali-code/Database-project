@@ -39,7 +39,7 @@ pays				VARCHAR(20)
 );
 
 -- CONFERENCE 
-CREATE TABLE Conference
+CREATE TABLE conference
 (
 idConference			VARCHAR(4) PRIMARY KEY,
 nomConference			VARCHAR(40),
@@ -49,7 +49,7 @@ classeConference		VARCHAR(2)
 
 -- PUBLICATION
 
-CREATE TABLE Publication
+CREATE TABLE publication
 (
 idPublication			VARCHAR(4) PRIMARY KEY,
 idConference			VARCHAR(4) REFERENCES Conference(idConference),
@@ -61,7 +61,7 @@ nbPages       			INT
 
 -- AUTEUR EXTERNE
 
-CREATE TABLE AuteurExterne
+CREATE TABLE auteurExterne
 (
 idAuteurExterne			VARCHAR(4)  PRIMARY KEY,
 nom				VARCHAR(20),
@@ -73,7 +73,7 @@ idLaboratoireExterne		VARCHAR(4) REFERENCES LabExterne(idlaboratoireexterne)
 
 -- PERSONEL 
 
-CREATE TABLE Personnel
+CREATE TABLE personnel
 (
 idPersonnel			VARCHAR(4)  PRIMARY KEY,
 nom				VARCHAR(20),
@@ -86,7 +86,7 @@ adresse				VARCHAR(100)
 
 -- SCIENTIFIQUE 
 
-CREATE TABLE Scientifique 
+CREATE TABLE scientifique 
 (
 idScientifique VARCHAR(4) PRIMARY KEY REFERENCES Personnel(idPersonnel),
 grade VARCHAR(5)
@@ -95,7 +95,7 @@ grade VARCHAR(5)
 
 -- DOCTORANT 
 
-CREATE TABLE Doctorant 
+CREATE TABLE doctorant 
 (
 idDoctorant VARCHAR(4) PRIMARY KEY REFERENCES Personnel(idPersonnel),
 dateDebutThese				date,
@@ -104,7 +104,7 @@ dateDebutSoutenance			date
 
 
 -- PublicationPersonnel
-CREATE TABLE PublicationPersonnel 
+CREATE TABLE publicationPersonnel 
 (
 idPersonnel VARCHAR(4)  REFERENCES Personnel (idPersonnel),
 idPublication VARCHAR(4)  REFERENCES Publication (idPublication),
@@ -113,7 +113,7 @@ CONSTRAINT pk_personnel_publication PRIMARY KEY(idPersonnel,idPublication)
 
 
 -- PublicationExterne
-CREATE TABLE PublicationExterne 
+CREATE TABLE publicationExterne 
 (
 idAuteurExterne VARCHAR(4)  REFERENCES AuteurExterne (idAuteurExterne),
 idPublication VARCHAR(4)  REFERENCES Publication (idPublication),
@@ -123,7 +123,7 @@ CONSTRAINT pk_externe_publication PRIMARY KEY(idAuteurExterne,idPublication)
 
 -- Chercheur
 
-CREATE TABLE Chercheur (
+CREATE TABLE chercheur (
     idChercheur character varying PRIMARY KEY REFERENCES Scientifique(idScientifique),
     grade character varying
 );
