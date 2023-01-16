@@ -192,7 +192,7 @@ From chercheurenseignant
 Group By idetablissement
 
 
--- 16)Le pays avec lequel le laboratoire a plus de publications 
+-- 16)
 
 
 
@@ -227,10 +227,26 @@ NATURAL JOIN (SELECT idEtablissement, COUNT(*) "nombre de enseignantschercheurs"
 
 
 
--- 20)Les scientifiques qui ont le plus de projets 
-
-
-
+-- 20)
+select “personnel"."nom", "personnel". "“prenom"
+	from “personnel”
+	join(
+	select projcher.”idChercheur"
+		from(
+		Select max(projCher."compte") as maxcompte
+		from (
+		select count("ParticipationProjet".”"idProjet") as compte,arlene Kondo Lee Keli) ney [Lam eG met 10 ae
+		from "ParticipationProjet”
+		group by “ParticipationProjet"."idChercheur”
+		) as projCher
+		) as mproj,i
+		select count("ParticipationProjet"."idProjet") as compte,
+		“PparticipationProjet”."idchercheur”
+				from “ParticipationProjet”
+				group by “ParticipationProjet".”idChercheur”
+						Dee non eu
+						where projCher.compte = mproj.maxcompte
+						) as idmax on “personnel"."idpersonnel" = idmax."idChercheur";
 
 -- 21)
 SELECT Partenaire.pays
