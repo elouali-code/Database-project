@@ -39,9 +39,28 @@ JOIN
 		
 
 3)
-select Count(DISTINCT idpartenaire) 
-From listepartenaire  
-Where idprojet in (select idprojet From participantprojet where idscientifique ='S001')
+SELECT Count(*)"Nombre de collaborateurs total" 
+FROM
+(
+    SELECT DISTINCT PP.idpersonnel 
+    FROM publicationpersonnel PP 
+    WHERE PP.idpublication IN
+        (
+            SELECT PP.idpublication 
+            FROM publicationpersonnel PP 
+            WHERE PP.idpersonnel = 'S004' 
+        )
+    UNION 
+    
+    SELECT DISTINCT PE.idauteurexterne 
+    FROM publicationexterne PE 
+    WHERE PE.idpublication IN
+        (    
+            SELECT PP.idpublication 
+            FROM publicationpersonnel PP 
+            WHERE PP.idpersonnel = 'S004' 
+        )
+) AS collaborateurtotal
 
 
 
