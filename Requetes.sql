@@ -1,4 +1,4 @@
-1)
+-- 1)
 SELECT personnel.nom, scientifique.grade
 FROM personnel, scientifique, encadrer
 WHERE encadrer.iddoctorant = 'd001'
@@ -7,7 +7,7 @@ and encadrer.idscientifique = personnel.idpersonnel
 
 
 
-2)
+-- 2)
 SELECT NewFinalTable.nom, LE.pays 
 FROM labexterne LE
 JOIN 
@@ -38,7 +38,7 @@ JOIN
 
 		
 
-3)
+-- 3)
 SELECT Count(*)"Nombre de collaborateurs total" 
 FROM
 (
@@ -64,7 +64,7 @@ FROM
 
 
 
-4)
+-- 4)
 SELECT Count( DISTINCT AE.idlaboratoireexterne )  
 FROM auteurexterne AE 
 WHERE AE.idauteurexterne IN
@@ -85,7 +85,7 @@ WHERE AE.idauteurexterne IN
 	)
 
 
-5)
+-- 5)
 SELECT Doctorant.iddoctorant, COUNT (Publicationpersonnel.idPublication)
 FROM Publicationpersonnel, Doctorant
 GROUP BY Doctorant.iddoctorant, PublicationPersonnel.idpersonnel
@@ -93,14 +93,14 @@ HAVING PublicationPersonnel.idpersonnel = Doctorant.iddoctorant
 
 
 
-6)
+-- 6)
 Select Count(Distinct doctorant.iddoctorant) as NbreDoctorants 
 From doctorant 
 where datedebutsoutenance >= Current_Date
 
 
 
-7)
+-- 7)
 SELECT nom, prenom
 FROM personnel
 NATURAL JOIN (SELECT idscientifique
@@ -111,7 +111,7 @@ NATURAL JOIN (SELECT idscientifique
 
 
 
-8)
+-- 8)
 SELECT P.nom, P.prenom 
 FROM personnel P 
 WHERE P.idpersonnel IN 
@@ -130,7 +130,7 @@ WHERE P.idpersonnel IN
 	)
 
 
-9)
+-- 9)
 SELECT Personnel.nom, Personnel.prenom
 FROM Personnel, Encadrer, Doctorant
 WHERE doctorant.datedebutsoutenance > Current_Date
@@ -138,7 +138,7 @@ and Doctorant.iddoctorant =Encadrer.idscientifique
 and Encadrer.idscientifique= Personnel.idpersonnel
 
 
-10)
+-- 10)
 SELECT idPersonnel, nom, prenom
 FROM Personnel
 NATURAL JOIN (SELECT encadrer.iddoctorant, COUNT (DISTINCT encadrer.idScientifique)
@@ -149,14 +149,14 @@ NATURAL JOIN (SELECT encadrer.iddoctorant, COUNT (DISTINCT encadrer.idScientifiq
 
 
 
-11)     
+-- 11)     
 Select iddoctorant, Count(Distinct encadrer.idscientifique) as NbreEncadrants 
 From encadrer 
 Group by iddoctorant 
 Having Count(Distinct encadrer.idscientifique)>3
 
 
-12)
+-- 12)
 SELECT idPersonnel
 FROM PublicationPersonnel
 EXCEPT
@@ -168,7 +168,7 @@ NATURAL JOIN (SELECT idPublication
 
 
 
-13)
+-- 13)
 SELECT idpersonnel, nom, prenom
 FROM Personnel
 NATURAL JOIN (SELECT idscientifique
@@ -178,7 +178,7 @@ NATURAL JOIN (SELECT idscientifique
 
 
 
-14)
+-- 14)
 SELECT  anneePublication, COUNT (*) "nombre de publications"
 FROM Publication
 GROUP BY anneePublication 
@@ -186,17 +186,17 @@ GROUP BY anneePublication
 	
 
 
-15)
+-- 15)
 Select idetablissement, Count(Distinct idscientifique) 
 From chercheurenseignant 
 Group By idetablissement
 
 
-16)Le pays avec lequel le laboratoire a plus de publications 
+-- 16)Le pays avec lequel le laboratoire a plus de publications 
 
 
 
-17)
+-- 17)
 Les scientifiques qui ont un seul projet
 SELECT idPorteur
 FROM ProjetLAAS
@@ -207,7 +207,7 @@ NATURAL JOIN (SELECT idPorteur, COUNT (*) "nombre de projets"
 
 
 
-18)
+-- 18)
 SELECT *
 FROM Scientifique
 NATURAL JOIN (SELECT ParticipantProjet.idScientifique, COUNT(ParticipantProjet.idScientifique) as nombre_de_projets_participant
@@ -217,7 +217,7 @@ NATURAL JOIN (SELECT ParticipantProjet.idScientifique, COUNT(ParticipantProjet.i
 
 
 
-19)
+-- 19)
 SELECT *
 FROM etablisement
 NATURAL JOIN (SELECT idEtablissement, COUNT(*) "nombre de enseignantschercheurs"
@@ -227,12 +227,12 @@ NATURAL JOIN (SELECT idEtablissement, COUNT(*) "nombre de enseignantschercheurs"
 
 
 
-20)Les scientifiques qui ont le plus de projets 
+-- 20)Les scientifiques qui ont le plus de projets 
 
 
 
 
-21)
+-- 21)
 SELECT Partenaire.pays
 FROM Partenaire
 NATURAL JOIN (SELECT idPartenaire
